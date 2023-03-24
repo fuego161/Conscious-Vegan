@@ -1,0 +1,40 @@
+.intro,
+.split {
+	$slider: '.slider';
+
+	&__media {
+		margin-top: 1.5em;
+
+		&--video {
+			overflow: hidden;
+		}
+
+		&--slider {
+			display: block;
+			width: 100%;
+
+			#{$slider} {
+				&__slide {
+					@include background-defaults;
+				}
+
+				&__spacer {
+					@include aspect-ratio(3, 2);
+				}
+			}
+		}
+
+		&--image {
+			@include background-defaults;
+
+			&:after {
+				@include aspect-ratio(3, 2, true);
+			}
+		}
+
+		@include breakpoint(tablet) {
+			width: 55%;
+			margin: 0;
+		}
+	}
+}

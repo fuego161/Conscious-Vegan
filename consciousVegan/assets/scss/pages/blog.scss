@@ -1,0 +1,119 @@
+.posts {
+	$posts: &;
+
+	&__output {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		gap: 2em 0;
+		grid-template-areas: '.';
+	}
+
+	.section-title {
+		text-align: center;
+	}
+
+	@include breakpoint(tablet) {
+		&__output {
+			gap: 1.5em;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@include breakpoint(desktop) {
+		&__output {
+			gap: 1.5em;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+}
+
+.card {
+	$card: &;
+
+	background-color: #f2f2f2;
+	box-shadow: 0 3px 12px rgba(67, 85, 99, .05);
+	border-radius: 6px;
+	overflow: hidden;
+
+	&__image {
+		@include background-defaults;
+
+		&:after {
+			@include aspect-ratio(3, 2, true);
+		}
+	}
+
+	&__content {
+		padding: 1em .5em 1.25em;
+	}
+
+	&__date {
+		margin: 0 0 .45em;
+	}
+
+	&__subtitle {
+		margin: 0;
+		color: color(primary);
+	}
+
+	&__snippet {
+		margin: .4em 0 0;
+	}
+
+	&__link {
+		margin-top: .75em;
+	}
+
+	@include breakpoint(tablet) {
+		&--featured {
+			grid-area: 1 / 1 / 2 / 3;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			#{$card} {
+				&__image {
+					width: 55%;
+				}
+
+				&__content {
+					width: 40%;
+					margin: 0 auto;
+					padding: 1em 0;
+				}
+			}
+		}
+	}
+
+	@include breakpoint(laptop) {
+		&__content {
+			padding: 1em 1.5em 1.25em;
+		}
+	}
+
+	@include breakpoint(desktop) {
+		&--featured {
+			grid-area: 1 / 1 / 2 / 4;
+		}
+	}
+}
+
+.date {
+	margin: 0 0 .45em;
+	color: color(secondary);
+	font-size: .75rem;
+}
+
+.load-more {
+	display: block;
+	width: 160px;
+	margin: 2em auto 0;
+	text-align: center;
+}
+
+.results__error {
+	margin: 1.25em 0 0;
+	color: color(primary);
+	text-align: center;
+}

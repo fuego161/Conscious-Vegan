@@ -1,0 +1,124 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:list';
+
+@mixin breakpoint($point) {
+	@if $point == desktop {
+		// 1120px
+		@media (min-width: 70em) {
+			@content;
+		}
+	} @else if $point == laptop {
+		// 1024px
+		@media (min-width: 64em) {
+			@content;
+		}
+	} @else if $point == tablet {
+		// 800px
+		@media (min-width: 50em) {
+			@content;
+		}
+	} @else if $point == phablet {
+		// 600px
+		@media (min-width: 37.5em) {
+			@content;
+		}
+	} @else if $point == mobileonly {
+		// 600px
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	} @else {
+		@media (min-width: $point) {
+			@content;
+		}
+	}
+}
+
+@mixin background-defaults {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@mixin aspect-ratio($width, $height, $pseudo: false) {
+	@if ($pseudo == true) {
+		content: '';
+	}
+
+	display: block;
+	width: 100%;
+	padding-bottom: math.div($height, $width) * 100%;
+}
+
+@mixin absolute-fill {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+@mixin list-reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin button-reset {
+	appearance: none;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+// A mixin to output font face decelerations
+@mixin font-face($font) {
+	// Get the name of the font face
+	$name: map.get($font, 'name');
+	// Get the path for the font face
+	$path: map.get($font, 'path');
+	// Get the formats of the font face
+	$formats: map.get($font, 'formats');
+
+	// Get the types we want to declare for the font faces
+	// type: the font type used within the path ('regular', 500, 600)
+	// weight: the weight of the font used for font-weight
+	// style: the style of the font used for font-style
+	$types: map.get($font, 'types');
+
+	// Loop over each type to create each font face deceleration
+	@each $type, $weight, $style in $types {
+		// Start the src declaration with an old IE fix
+		$src: local('0');
+
+		// Loop over each format and append the src to the $src variable
+		@each $ext, $format in $formats {
+			$src: list.append($src, url('#{$path}-#{$type}.#{$ext}') format('#{$format}'), comma);
+		}
+
+		// Declare the font face with all the variables retrieved and created above
+		@font-face {
+			font-family: $name;
+			font-style: $style;
+			font-weight: $weight;
+			font-display: swap;
+			src: url('#{$path}-#{$type}.eot');
+			src: $src;
+		}
+	}
+}
+
+@mixin z-index($size, $important: false) {
+	@if map-has-key($z-indexes, $size) {
+		@if ($important == true) {
+			z-index: map.get($z-indexes, $size) !important; /* stylelint-disable-line declaration-no-important */
+		} @else {
+			z-index: map.get($z-indexes, $size);
+		}
+	} @else {
+		@error "Invalid z-index: '#{$size}'.";
+	}
+}

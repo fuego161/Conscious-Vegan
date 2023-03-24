@@ -1,0 +1,43 @@
+@use 'sass:map';
+
+$colors: (
+	primary: #d84548,
+	secondary: #333,
+	text: #242d3c,
+	secondary-text: #f9f3f3,
+);
+@function color($color-name) {
+	@return map.get($colors, $color-name);
+}
+
+$fonts: (
+	header: (
+		'Montserrat',
+		sans-serif,
+	),
+	body: (
+		'Montserrat',
+		sans-serif,
+	),
+);
+@function font($font-name) {
+	@return map.get($fonts, $font-name);
+}
+
+$z-indexes: (
+	sub: -1,
+	none: 0,
+	xxs: 1,
+	xs: 10,
+	sm: 50,
+	md: 100,
+	lg: 200,
+	xl: 500,
+	trump: 99999,
+);
+
+// Example usage
+// color: color(primary);
+
+// Set border radius
+$border-radius: 6px;

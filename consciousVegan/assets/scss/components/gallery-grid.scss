@@ -1,0 +1,90 @@
+.g-gallery {
+	.section-title {
+		margin-bottom: .75em;
+		text-align: center;
+	}
+
+	&__output {
+		@include list-reset;
+		max-width: 1040px;
+		margin: 0 auto;
+	}
+
+	&__item {
+		position: relative;
+		display: block;
+		width: 100%;
+		max-width: 360px;
+		margin: 0 auto 2em;
+		box-shadow: 2px 2px 5px rgba(55, 84, 170, .05);
+		&:after {
+			@include aspect-ratio(1, 1, true);
+		}
+	}
+
+	&__image {
+		@include absolute-fill;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+
+	@include breakpoint(phablet) {
+		&__output {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		&__item {
+			width: 46%;
+			max-width: none;
+			margin-bottom: 4%;
+		}
+	}
+
+	@include breakpoint(tablet) {
+		&__item {
+			width: 30%;
+			margin-bottom: 3.33%;
+		}
+	}
+}
+
+.glightbox-g-gallery {
+	.gslide-description {
+		background-color: color(primary);
+	}
+
+	.gslide-title,
+	.gslide-desc {
+		color: #fff;
+		text-align: center;
+	}
+
+	.gslide-title {
+		margin: 0 0 .35em;
+		font-family: font(header);
+		font-size: 1.2rem;
+		line-height: 1.4;
+
+		@include breakpoint(laptop) {
+			font-size: 1.3rem;
+		}
+	}
+
+	.gslide-desc {
+		margin: .35em 0 0;
+		font-family: font(body);
+		font-size: .95rem;
+		text-align: center;
+		font-weight: 300;
+		letter-spacing: .65px;
+		line-height: 1.8;
+
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+}

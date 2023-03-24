@@ -1,0 +1,47 @@
+/*!
+Theme Name: Conscious Vegan
+Author: TCKR
+Author URI: https://tckr.uk/
+Version: 1.0
+Text Domain: conscious_vegan
+*/
+
+// Third Party
+@import 'normalize/import-now';
+@import 'glide.core';
+@import 'glightbox';
+
+// Utils
+@import 'utils/variables';
+@import 'utils/mixins';
+
+// Base
+@import 'base/general';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/wysiwyg';
+@import 'components/buttons';
+
+// Layout
+@import 'layout/layout';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/footer';
+
+// Components
+@import 'components/form';
+@import 'components/sliders';
+@import 'components/multi-img-output';
+@import 'components/intro';
+@import 'components/split';
+@import 'components/cta';
+@import 'components/accordion';
+@import 'components/gallery-grid';
+@import 'components/gallery-carousel';
+@import 'components/prompt';
+
+// Pages
+@import 'pages/home';
+@import 'pages/contact';
+@import 'pages/blog';
+@import 'pages/single';

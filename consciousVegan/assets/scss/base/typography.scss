@@ -1,0 +1,121 @@
+:root {
+	font-size: 16px;
+}
+
+body {
+	color: color(text);
+	font-family: font(body);
+}
+
+// Headers
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header-font {
+	color: color(primary);
+	font-family: font(header);
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.section-title,
+.section-subtitle {
+	margin: 0;
+}
+
+.section-title {
+	margin-bottom: .3em;
+	font-size: 1.7rem;
+	line-height: 1.4;
+}
+
+.section-subtitle {
+	margin-bottom: .35em;
+	color: color(secondary);
+	font-size: 1.2rem;
+}
+
+// Body Text
+p,
+a,
+ul,
+li,
+input,
+option,
+textarea,
+select,
+label,
+.btn {
+	color: color(text);
+	font-size: .95rem;
+	font-weight: 400;
+	letter-spacing: .35px;
+	line-height: 1.75;
+}
+
+p {
+	margin: .75em 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+strong {
+	color: color(primary);
+	font-weight: 600;
+}
+
+.btn {
+	color: color(primary);
+	font-size: 1rem;
+}
+
+@include breakpoint(phablet) {
+	.section-title {
+		font-size: 1.75rem;
+	}
+	.section-subtitle {
+		font-size: 1.25rem;
+	}
+}
+
+@include breakpoint(tablet) {
+	p,
+	a,
+	ul,
+	li,
+	input,
+	option,
+	textarea,
+	select,
+	label,
+	.btn {
+		font-size: 1rem;
+	}
+}
+
+@include breakpoint(laptop) {
+	.section-title {
+		font-size: 1.85rem;
+	}
+	.section-subtitle {
+		font-size: 1.4rem;
+	}
+
+	p,
+	a,
+	ul,
+	li,
+	input,
+	option,
+	textarea,
+	select,
+	label,
+	.btn {
+		font-size: 1.05rem;
+	}
+}

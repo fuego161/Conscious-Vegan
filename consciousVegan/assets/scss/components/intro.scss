@@ -1,0 +1,19 @@
+.intro {
+	.wrapper {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	@include breakpoint(tablet) {
+		.wrapper {
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&__content {
+			width: 40%;
+		}
+	}
+}

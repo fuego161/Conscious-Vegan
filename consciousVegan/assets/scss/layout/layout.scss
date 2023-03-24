@@ -1,0 +1,108 @@
+.header,
+.footer,
+section {
+	.wrapper {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 0 1em;
+
+		&--thin {
+			max-width: 1020px;
+		}
+
+		@include breakpoint(tablet) {
+			padding: 0 2em;
+		}
+
+		@include breakpoint(laptop) {
+			padding: 0 2.5em;
+		}
+
+		@include breakpoint(desktop) {
+			padding: 0 3em;
+		}
+	}
+}
+
+section .wrapper {
+	&--bg {
+		padding-top: 2.5em;
+		padding-bottom: 2.5em;
+	}
+
+	&--img {
+		max-width: 920px;
+		margin: 0 auto;
+		padding-top: 3.5em;
+		padding-bottom: 3.5em;
+	}
+
+	@include breakpoint(phablet) {
+		&--bg {
+			padding-top: 3em;
+			padding-bottom: 3em;
+		}
+
+		&--img {
+			padding-top: 4em;
+			padding-bottom: 4em;
+		}
+	}
+
+	@include breakpoint(tablet) {
+		&--bg {
+			padding-top: 3.5em;
+			padding-bottom: 3.5em;
+		}
+
+		&--img {
+			padding-top: 4.5em;
+			padding-bottom: 4.5em;
+		}
+	}
+
+	@include breakpoint(laptop) {
+		&--bg {
+			padding-top: 4.5em;
+			padding-bottom: 4.5em;
+		}
+
+		&--img {
+			padding-top: 5.5em;
+			padding-bottom: 5.5em;
+		}
+	}
+
+	@include breakpoint(desktop) {
+		&--bg {
+			padding-top: 6em;
+			padding-bottom: 6em;
+		}
+
+		&--img {
+			padding-top: 7em;
+			padding-bottom: 7em;
+		}
+	}
+}
+
+section,
+footer {
+	margin: 3em 0 0;
+
+	@include breakpoint(phablet) {
+		margin: 4em 0 0;
+	}
+
+	@include breakpoint(tablet) {
+		margin: 4.5em 0 0;
+	}
+
+	@include breakpoint(laptop) {
+		margin: 5.5em 0 0;
+	}
+
+	@include breakpoint(desktop) {
+		margin: 6em 0 0;
+	}
+}

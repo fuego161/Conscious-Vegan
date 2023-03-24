@@ -1,0 +1,59 @@
+.prompt {
+	display: none;
+	position: sticky;
+	top: 0;
+	margin-top: 0;
+	padding: .5em 0;
+	background-color: color(secondary);
+	transition: transform .45s ease-out;
+	z-index: 250;
+	text-align: center;
+
+	&--scrolled {
+		transform: translateY(49px);
+	}
+
+	&__text {
+		color: #fff;
+		font-weight: 500;
+	}
+
+	&__btn {
+		margin: .5em;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: .75em;
+		right: .75em;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		path {
+			fill: #fff;
+		}
+	}
+
+	@include breakpoint(laptop) {
+		z-index: 1000;
+
+		.wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&--scrolled {
+			transform: translateY(78px);
+		}
+
+		&__text {
+			margin-right: 1em;
+		}
+	}
+}

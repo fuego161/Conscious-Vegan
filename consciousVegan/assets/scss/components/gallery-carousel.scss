@@ -1,0 +1,289 @@
+/*
+ * When dealing with third party library overwrites lenience with !important is granted
+ * Do not abuse this and use only where absolutely necessary
+ */
+
+/* stylelint-disable declaration-no-important */
+.c-gallery {
+	$gallery: &;
+
+	.section-title {
+		margin-bottom: .75em;
+		text-align: center;
+	}
+	&__container {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__slides {
+		@include list-reset;
+		display: grid;
+		grid-template-areas: 'cgallery'; //create a 1x1 grid where the single cell is called slide
+		// Import used to override generated glidejs styles
+		transform: none !important;
+		width: auto !important;
+		margin: 0;
+	}
+
+	&__slide {
+		@include background-defaults;
+		position: relative;
+		grid-area: cgallery; //assign all child slides to the cell
+		align-self: flex-start;
+		width: 100% !important;
+		height: auto;
+		opacity: 0;
+		transition: opacity .5s ease;
+		text-align: center;
+
+		&--active {
+			z-index: 1;
+			opacity: 1;
+		}
+	}
+
+	&__spacer {
+		@include aspect-ratio(3, 2);
+	}
+
+	// Toggle
+	&__toggle {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		width: 60px;
+		height: 60px;
+		z-index: 10;
+		transition: transform .35s;
+
+		&:before {
+			content: '';
+			position: absolute;
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 0 60px 60px;
+			border-color: transparent transparent rgba(color(primary), .6) transparent;
+		}
+
+		&--hidden {
+			transform: translateY(100%);
+		}
+	}
+
+	&__toggle-icon {
+		position: relative;
+		width: 1.5em;
+		height: 1.5em;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		z-index: 10;
+		cursor: pointer;
+
+		path {
+			fill: rgba(#fff, .85);
+		}
+	}
+
+	// Overlay
+	&__overlay {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		left: 0;
+		right: 0;
+		bottom: 1em;
+		width: 90%;
+		max-width: 340px;
+		margin: 0 auto;
+		padding: .75em 1em;
+		background-color: rgba(color(primary), .6);
+		transform: translateY(calc(100% + 1em));
+		transition: transform .35s;
+		z-index: 10;
+
+		&--showing {
+			transform: translateY(0);
+		}
+	}
+
+	&__switch {
+		width: 22px;
+		height: 22px;
+		cursor: pointer;
+
+		&:hover {
+			#{$gallery}__icon {
+				path {
+					fill: #fff;
+				}
+			}
+		}
+	}
+
+	&__icon {
+		width: 100%;
+		height: 100%;
+
+		path {
+			fill: rgba(#fff, .85);
+			transition: fill .35s;
+		}
+	}
+
+	// Bullets
+	&__bullets {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		width: 160px;
+		margin: 0 1em;
+	}
+
+	&__bullet {
+		@include button-reset;
+		width: .5em;
+		height: .5em;
+		margin: .25em;
+		padding: 0;
+		background-color: rgba(#fff, .5);
+		transition: background-color .35s;
+
+		&:hover,
+		&--active {
+			background-color: #fff;
+		}
+	}
+
+	// Thumbs
+	&__thumbs {
+		display: none;
+		position: absolute;
+		@include absolute-fill;
+		overflow-y: scroll;
+		z-index: 10;
+		background: rgba(28, 28, 28, .85);
+	}
+
+	&__thumbs-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding: .5em;
+	}
+
+	&__thumb {
+		width: 18%;
+		height: auto;
+		margin: 1%;
+		transition: opacity .35s;
+		cursor: pointer;
+
+		&#{$gallery}__bullet--active {
+			opacity: .3;
+		}
+	}
+
+	@include breakpoint(tablet) {
+		// Toggle
+		&__toggle {
+			display: none;
+		}
+
+		// Overlay
+		&__overlay {
+			bottom: 1.5em;
+			max-width: 400px;
+			padding: .75em 1.25em;
+			transform: translateY(0);
+
+			&--hidden {
+				transform: translateY(calc(100% + 1.5em));
+			}
+		}
+
+		&__switch {
+			width: 24px;
+			height: 24px;
+		}
+
+		// Bullets
+		&__bullets {
+			width: 180px;
+		}
+
+		&__bullet {
+			width: .65em;
+			height: .65em;
+			margin: .3em;
+		}
+
+		// Thumbs
+		&__thumbs-wrapper {
+			padding: 1em;
+		}
+
+		&__thumb {
+			width: 15%;
+			margin: .833%;
+		}
+	}
+
+	@include breakpoint(laptop) {
+		&__title {
+			margin-bottom: .5em;
+		}
+
+		// Overlay
+		&__overlay {
+			max-width: 420px;
+			padding: .75em 1em;
+		}
+
+		&__switch {
+			width: 26px;
+			height: 26px;
+		}
+
+		// Bullets
+		&__bullets {
+			width: 220px;
+		}
+
+		&__bullet {
+			width: .7em;
+			height: .7em;
+			// margin: .3em;
+		}
+
+		// Thumbs
+		&__thumbs-wrapper {
+			padding: 1.5em;
+		}
+
+		&__thumb {
+			width: 12%;
+			margin: 1.14%;
+		}
+	}
+
+	@include breakpoint(desktop) {
+		// Thumbs
+		&__thumbs-wrapper {
+			padding: 2em;
+		}
+
+		&__thumb {
+			width: 10%;
+			margin: 1.25%;
+		}
+	}
+}
+
+/* stylelint-enable declaration-no-important */

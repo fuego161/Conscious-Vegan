@@ -1,0 +1,147 @@
+@mixin icon-size($size) {
+	width: $size;
+	min-width: $size;
+	height: $size;
+	min-height: $size;
+}
+
+.accordion {
+	$accordion: '.accordion';
+
+	&__group {
+		margin-top: 2.5em;
+		border: solid 3px color(primary);
+		border-radius: $border-radius;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		@include breakpoint(tablet) {
+			margin-top: 4em;
+		}
+	}
+
+	&__subtitle {
+		margin-bottom: 0;
+		padding: .5rem;
+		background-color: color(primary);
+		color: color(secondary-text);
+	}
+
+	&__block {
+		margin-top: 0;
+		padding: 0 .5em;
+		border-bottom: 2px solid color(primary);
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+
+		&--open {
+			#{$accordion}__icon-holder {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&__header {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1em 0;
+	}
+
+	&__question {
+		display: inline-block;
+		margin: 0;
+		transition: color .35s;
+
+		&:hover {
+			color: color(primary);
+		}
+	}
+
+	&__trigger {
+		cursor: pointer;
+	}
+
+	&__icon-holder {
+		display: flex;
+		margin-left: 1em;
+		transition: transform .35s;
+	}
+
+	&__icon {
+		@include icon-size(18px);
+		transition: opacity .35s;
+
+		path {
+			fill: color(primary);
+		}
+
+		&:hover {
+			opacity: .6;
+		}
+	}
+
+	&__content {
+		display: none;
+		padding-bottom: 1em;
+	}
+
+	&__text {
+		margin: 0;
+	}
+
+	section {
+		margin-top: 2.5em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	@include breakpoint(phablet) {
+		&__subtitle {
+			padding: 1rem .75rem;
+		}
+
+		&__block {
+			padding: 0 .75em;
+		}
+
+		&__header {
+			padding: 1.25em 0;
+		}
+
+		&__content {
+			padding-bottom: 1.25em;
+		}
+	}
+
+	@include breakpoint(tablet) {
+		&__icon {
+			@include icon-size(22px);
+		}
+	}
+
+	@include breakpoint(laptop) {
+		&__subtitle {
+			padding: 1.25rem 1rem;
+		}
+
+		&__block {
+			padding: 0 1em;
+		}
+
+		&__header {
+			padding: 1.5em 0;
+		}
+
+		&__content {
+			padding-bottom: 1.5em;
+		}
+	}
+}

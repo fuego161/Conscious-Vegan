@@ -1,0 +1,70 @@
+.wysiwyg {
+	a {
+		text-decoration: underline;
+	}
+
+	ul {
+		margin-bottom: 0;
+		padding-left: .5em;
+		list-style: none;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	blockquote {
+		border-left: solid 3px color(primary);
+		margin: 1em .5em;
+		padding-left: .75em;
+		font-style: italic;
+
+		@include breakpoint(tablet) {
+			margin: 1.5em;
+			padding-left: 1em;
+		}
+	}
+
+	&__iframe-holder {
+		position: relative;
+		width: 100%;
+
+		&:after {
+			content: '';
+			@include aspect-ratio(16, 9);
+		}
+
+		&.blocked:before {
+			content: "Due to your cookie choices, we can't show you this content. Please accept third party cookies to view this video. Find cookie setting by clicking the tab in the bottom left of your browser.";
+			@include absolute-fill;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: .5em;
+			background-color: color(primary);
+			z-index: 10;
+			color: #fff;
+			text-align: center;
+			font-size: .85rem;
+			font-weight: 500;
+			line-height: 1.65;
+
+			@include breakpoint(tablet) {
+				padding: 1em;
+				font-size: 1rem;
+			}
+
+			@include breakpoint(laptop) {
+				padding: 1em 2em;
+				font-size: 1.15rem;
+			}
+		}
+	}
+
+	&__iframe {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+}

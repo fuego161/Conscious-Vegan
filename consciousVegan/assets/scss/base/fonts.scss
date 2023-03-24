@@ -1,0 +1,35 @@
+// Formats
+// Time saving maps if we're using Google Webfonts Helper (https://google-webfonts-helper.herokuapp.com/fonts) to get Google fonts.
+// Of course, you can use your own maps if these don't match
+$best_support: (
+	('eot?#iefix', 'embedded-opentype'), // IE6-IE8
+	('woff2', 'woff2'), // Super Modern Browsers
+	('woff', 'woff'), // Modern Browsers
+	('ttf', 'truetype'), // Safari, Android, iOS
+	('svg#Montserrat', 'svg'), // Legacy iOS
+);
+
+$modern_browsers: (
+	('woff2', 'woff2'), // Super Modern Browsers
+	('woff', 'woff'), // Modern Browsers
+);
+
+// Types example
+// [0] type: the font type used within the path
+// [1] weight: the weight of the font used for font-weight
+// [2] style: the style of the font used for font-style
+$types: (
+	('regular', 400, normal),
+	('600', 600, normal),
+);
+
+// Font map example that'll be passed to the font-face mixin
+$montserrat: (
+	'name': montserrat,
+	'path': 'assets/fonts/montserrat/montserrat-v25-latin',
+	'types': $types,
+	'formats': $best_support,
+);
+
+// Call this to make font face decelerations
+@include font-face($montserrat);

@@ -1,0 +1,48 @@
+.cta {
+	$cta: &;
+
+	text-align: center;
+
+	.wrapper {
+		max-width: 820px;
+	}
+
+	&__title {
+		margin-bottom: 0;
+	}
+
+	&__btns {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	&__btn {
+		margin: .5em;
+
+		@include breakpoint(tablet) {
+			margin: .5em .75em;
+		}
+	}
+
+	&--background {
+		background-color: color(primary);
+
+		.wrapper {
+			padding: 2em 0;
+		}
+
+		#{$cta} {
+			&__title,
+			&__text {
+				color: color(secondary-text);
+			}
+		}
+
+		@include breakpoint(tablet) {
+			.wrapper {
+				padding: 2.5em 0;
+			}
+		}
+	}
+}

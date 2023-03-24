@@ -1,0 +1,341 @@
+.form {
+	$form: &;
+
+	// Form section
+	&__section {
+		width: 100%;
+	}
+
+	// Section title
+	&__title {
+		display: block;
+		width: 100%;
+		margin: 0 0 1em;
+		color: color(primary);
+	}
+
+	// Section subtitle
+	&__subtitle {
+		margin: 0 0 1em;
+	}
+
+	// Section wrapper
+	&__wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	// Form element containers
+	&__group {
+		position: relative;
+		width: 100%;
+		margin-top: 1.5em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&--hide {
+			display: none;
+		}
+
+		&--notes {
+			p {
+				&:first-of-type {
+					margin-top: 0;
+				}
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	// Labels
+	&__label {
+		display: block;
+		width: 100%;
+		color: color(secondary);
+
+		&--half {
+			width: 48%;
+
+			&:nth-child(2) {
+				margin-top: 0;
+			}
+		}
+
+		&--radio {
+			display: inline-flex;
+			align-items: center;
+			margin-top: 1.25em;
+
+			&:first-of-type {
+				margin-top: 0;
+			}
+		}
+	}
+
+	// Inputs
+	&__input,
+	&__select {
+		display: block;
+		width: 100%;
+		margin-top: .35em;
+		padding: .65em .75em;
+		border: 2px solid color(primary);
+		border-radius: $border-radius;
+		cursor: text;
+		color: color(body);
+		font: inherit;
+	}
+
+	&__input {
+		// Text Areas
+		&--textarea {
+			height: 220px;
+		}
+
+		// Styles to hide inputs
+		&--hidden {
+			width: 0;
+			height: 0;
+			margin: 0;
+			padding: 0;
+			background-color: transparent;
+			border: none;
+			font-size: 0;
+			visibility: hidden;
+		}
+
+		// Error handling styles
+		&__invalid {
+			box-shadow: inset 0 0 3px 1px rgb(148, 13, 13);
+		}
+	}
+
+	&__select {
+		padding-right: 1.85em;
+		// background: transparent;
+		// background-image: url('assets/img/icon/contact/select.png');
+		// background-repeat: no-repeat;
+		// background-position: calc(100% - 10px) 50%;
+		border-radius: $border-radius;
+		outline: 0;
+		cursor: pointer;
+		// Remove default arrows
+		// appearance: none;
+	}
+
+	&__radios {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: .35em;
+		padding: .65em 0;
+	}
+
+	&__radio,
+	&__checkbox {
+		// Reset
+		margin: 0;
+		padding: 0;
+		background: none;
+		background-clip: border-box;
+		border-radius: $border-radius;
+		outline: 0;
+		appearance: none;
+		cursor: pointer;
+		overflow: visible;
+		vertical-align: top;
+		text-decoration: none;
+		// Reset End
+
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 16px;
+		min-width: 16px;
+		height: 16px;
+		min-height: 16px;
+		border: 1px solid color(primary);
+		transform: translateY(1px);
+
+		&:after {
+			content: '';
+			display: block;
+			width: 8px;
+			height: 8px;
+			background-color: #fff;
+			transition: background-color .15s ease-in-out;
+		}
+
+		&:checked:after {
+			background-color: color(primary);
+		}
+	}
+
+	&__radio {
+		border-radius: 50%;
+		margin-right: .5em;
+
+		&:after {
+			border-radius: 50%;
+		}
+	}
+
+	&__checkbox {
+		margin-right: .35em;
+	}
+
+	// Hints
+	&__hint-container {
+		display: none;
+	}
+
+	&__hint {
+		display: block;
+		width: 100%;
+		margin: .5em 0 0;
+		color: color(secondary);
+		font-size: .9rem;
+		text-align: left;
+		font-weight: 600;
+	}
+
+	// Info
+	&__info {
+		display: none;
+		position: absolute;
+		width: 100%;
+		padding: .5em;
+		background-color: color(primary);
+		z-index: 10;
+
+		p {
+			margin: 0;
+			color: #fff;
+			font-size: .85rem;
+			text-align: center;
+		}
+	}
+
+	// Submit button
+	&__btn {
+		// Base - May need to remove styles if clash with your .btn styles
+		padding: .75em .5em;
+		border: solid 1px color(primary);
+		// Base End
+
+		width: 100%;
+		cursor: pointer;
+
+		&[disabled] {
+			opacity: .2;
+			cursor: not-allowed;
+		}
+	}
+
+	&--sectioned {
+		#{$form} {
+			&__section {
+				margin-top: 2.5em;
+
+				&:first-of-type {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	&--main {
+		margin-top: 1.25em;
+	}
+
+	@include breakpoint(phablet) {
+		&__group,
+		&__label {
+			// Form element containers which sit on the same line
+			&--half,
+			&--third,
+			&--quarter {
+				width: 48%;
+
+				&:nth-of-type(2) {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	@include breakpoint(tablet) {
+		// Form element containers
+		&__group,
+		&__label {
+			&--third {
+				width: 32%;
+
+				&:nth-of-type(3) {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	@include breakpoint(laptop) {
+		// Form element containers
+		&__group,
+		&__label {
+			&--quarter {
+				width: 24%;
+
+				&:nth-of-type(3),
+				&:nth-of-type(4) {
+					margin-top: 0;
+				}
+			}
+		}
+
+		&--main {
+			margin-top: 2em;
+		}
+	}
+}
+
+.label {
+	&--required {
+		color: color(primary);
+	}
+
+	&__info {
+		cursor: pointer;
+	}
+}
+
+.messages {
+	&__message {
+		display: none;
+
+		&--error {
+			margin: 0 0 2em;
+
+			@include breakpoint(laptop) {
+				margin: 1em 0 0;
+				color: color(brand_alt);
+			}
+		}
+
+		&--success {
+			margin: 2em 0;
+			font-family: font(header);
+			text-align: center;
+			font-size: 1.25rem;
+			color: color(primary);
+
+			@include breakpoint(laptop) {
+				margin: 0;
+			}
+		}
+	}
+}

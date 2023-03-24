@@ -1,0 +1,75 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100%;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+}
+
+// Remove tap highlight on iOS
+input,
+textarea,
+button,
+select,
+label,
+div,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+// Stop images from being draggablec
+img {
+	user-select: none;
+}
+
+::selection {
+	background: #000;
+	color: #fff;
+}
+::-moz-selection {
+	background: #000;
+	color: #fff;
+}
+
+// Clear input field styles
+input,
+textarea {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	display: inline-block;
+	overflow: visible;
+	margin: 0;
+	outline: 0;
+	width: auto;
+	padding: 0;
+	vertical-align: top;
+	text-decoration: none;
+	appearance: none;
+
+	// Adjust background display
+	background-clip: padding-box;
+
+	// Remove rounded corners
+	border-radius: 0;
+}
+
+textarea {
+	resize: none;
+}
+
+// Disable all animations and transitions if reduced motion
+@media (prefers-reduced-motion: reduce) {
+	* {
+		/* stylelint-disable declaration-no-important */
+		animation: none !important;
+		transition: none !important;
+		/* stylelint-enable declaration-no-important */
+	}
+}

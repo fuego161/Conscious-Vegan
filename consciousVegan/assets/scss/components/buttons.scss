@@ -1,0 +1,42 @@
+.btn {
+	@include button-reset;
+	display: inline-block;
+	padding: .5em 1.5em;
+	background: color(primary);
+	border: solid 2px color(primary);
+	border-radius: $border-radius;
+	color: #fff;
+	transition-property: color, background-color;
+	transition-duration: .35s;
+	text-decoration: none;
+
+	&:hover {
+		background: transparent;
+		color: color(primary);
+	}
+
+	&:focus,
+	&:focus-visible {
+		box-shadow: color(primary) 0 1px 4px;
+	}
+
+	&:focus-visible {
+		outline: none;
+	}
+
+	&--alt {
+		background: color(secondary);
+		border: solid 2px color(secondary);
+		color: color(secondary-text);
+
+		&:hover {
+			background: transparent;
+			color: color(secondary-text);
+		}
+
+		&:focus,
+		&:focus-visible {
+			box-shadow: color(secondary) 0 1px 4px;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+.slider {
+	$slider: &;
+
+	&--fade {
+		// stylelint-disable declaration-no-important
+		// Disable Justification: Need to override library applied styles
+		#{$slider}__slides {
+			@include list-reset;
+			display: grid;
+			grid-template-areas: 'slide'; //create a 1x1 grid where the single cell is called slide
+			// Import used to override generated glidejs styles
+			transform: none !important;
+			width: auto !important;
+			margin: 0;
+		}
+
+		#{$slider}__slide {
+			@include background-defaults;
+			position: relative;
+			grid-area: slide; //assign all child slides to the cell
+			align-self: flex-start;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100% !important;
+			height: 100%;
+			opacity: 0;
+			transition: opacity .5s ease;
+			text-align: center;
+
+			&--active {
+				z-index: 1;
+				opacity: 1;
+			}
+		}
+	}
+	// stylelint-enable
+}
